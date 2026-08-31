@@ -1,0 +1,169 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	objectVersion = 56;
+	objects = {
+
+		B1000001 /* NotesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000011; };
+		B1000002 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000012; };
+		B1000003 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000013; };
+		B1000004 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000014; };
+		B1000005 /* DaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000015; };
+		B1000006 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000016; };
+		B1000007 /* ComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000017; };
+		B1000008 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100001B; };
+		B100000A /* ExtrasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100001C; };
+		B100000B /* MoodFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100001D; };
+		B1000009 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1000018; };
+
+		B2000001 /* LogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2000011; };
+		B2000002 /* ApiClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2000012; };
+		B2000003 /* DecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2000013; };
+
+		B2000011 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicTests.swift; sourceTree = "<group>"; };
+		B2000012 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClientTests.swift; sourceTree = "<group>"; };
+		B2000013 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingTests.swift; sourceTree = "<group>"; };
+		B2000019 /* NotesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+
+		B2000020 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		B2000021 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (B2000001, B2000002, B2000003); runOnlyForDeploymentPostprocessing = 0; };
+
+		B2000031 /* NotesTests */ = {isa = PBXGroup; children = (B2000011, B2000012, B2000013); path = NotesTests; sourceTree = "<group>"; };
+
+		B2000070 = {isa = PBXTargetDependency; target = B1000040; targetProxy = B2000071; };
+		B2000071 = {isa = PBXContainerItemProxy; containerPortal = B1000041; proxyType = 1; remoteGlobalIDString = B1000040; remoteInfo = Notes; };
+
+		B2000040 /* NotesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2000051;
+			buildPhases = (B2000021, B2000020);
+			dependencies = (B2000070);
+			name = NotesTests;
+			productName = NotesTests;
+			productReference = B2000019;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+
+		B2000051 = {isa = XCConfigurationList; buildConfigurations = (B2000062, B2000063); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+
+		B2000062 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {
+			BUNDLE_LOADER = "$(TEST_HOST)";
+			GENERATE_INFOPLIST_FILE = YES;
+			PRODUCT_BUNDLE_IDENTIFIER = local.notes.tests;
+			PRODUCT_NAME = NotesTests;
+			TARGETED_DEVICE_FAMILY = 1;
+			TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Notes.app/Notes";
+		}; name = Debug; };
+		B2000063 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {
+			BUNDLE_LOADER = "$(TEST_HOST)";
+			GENERATE_INFOPLIST_FILE = YES;
+			PRODUCT_BUNDLE_IDENTIFIER = local.notes.tests;
+			PRODUCT_NAME = NotesTests;
+			TARGETED_DEVICE_FAMILY = 1;
+			TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Notes.app/Notes";
+		}; name = Release; };
+
+		B1000011 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesApp.swift; sourceTree = "<group>"; };
+		B1000012 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		B1000013 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		B1000014 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		B1000015 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysView.swift; sourceTree = "<group>"; };
+		B1000016 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
+		B1000017 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeView.swift; sourceTree = "<group>"; };
+		B100001B = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B100001C = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtrasView.swift; sourceTree = "<group>"; };
+		B100001D = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodFace.swift; sourceTree = "<group>"; };
+		B1000018 = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B1000019 /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+
+		B1000020 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		B1000021 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (B1000001, B1000002, B1000003, B1000004, B1000005, B1000006, B1000007, B1000008, B100000A, B100000B); runOnlyForDeploymentPostprocessing = 0; };
+		B1000022 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (B1000009); runOnlyForDeploymentPostprocessing = 0; };
+
+		B1000030 = {isa = PBXGroup; children = (B1000031, B2000031, B1000032); sourceTree = "<group>"; };
+		B1000031 /* Notes */ = {isa = PBXGroup; children = (B1000011, B1000012, B1000013, B1000014, B1000015, B1000016, B1000017, B100001B, B100001C, B100001D, B1000018); path = Notes; sourceTree = "<group>"; };
+		B1000032 /* Products */ = {isa = PBXGroup; children = (B1000019, B2000019); name = Products; sourceTree = "<group>"; };
+
+		B1000040 /* Notes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1000051;
+			buildPhases = (B1000021, B1000020, B1000022);
+			dependencies = ();
+			name = Notes;
+			productName = Notes;
+			productReference = B1000019;
+			productType = "com.apple.product-type.application";
+		};
+
+		B1000041 /* Project object */ = {
+			isa = PBXProject;
+			attributes = { BuildIndependentTargetsInParallel = 1; LastUpgradeCheck = 1540; };
+			buildConfigurationList = B1000050;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (en, Base);
+			mainGroup = B1000030;
+			productRefGroup = B1000032;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (B1000040, B2000040);
+		};
+
+		B1000050 = {isa = XCConfigurationList; buildConfigurations = (B1000060, B1000061); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		B1000051 = {isa = XCConfigurationList; buildConfigurations = (B1000062, B1000063); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+
+		B1000060 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {
+			CLANG_ENABLE_MODULES = YES;
+			IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+			ONLY_ACTIVE_ARCH = YES;
+			SDKROOT = iphoneos;
+			SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+			SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			SWIFT_VERSION = 5.0;
+		}; name = Debug; };
+		B1000061 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {
+			CLANG_ENABLE_MODULES = YES;
+			IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+			SDKROOT = iphoneos;
+			SWIFT_VERSION = 5.0;
+			VALIDATE_PRODUCT = YES;
+		}; name = Release; };
+		B1000062 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {
+			ENABLE_TESTABILITY = YES;
+			ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+			CODE_SIGN_STYLE = Automatic;
+			GENERATE_INFOPLIST_FILE = YES;
+			CURRENT_PROJECT_VERSION = 1;
+			MARKETING_VERSION = 1.0;
+			INFOPLIST_KEY_CFBundleDisplayName = "Notes";
+			INFOPLIST_KEY_NSCameraUsageDescription = "Notes chup anh de dan vao nhat ky.";
+			INFOPLIST_KEY_NSMicrophoneUsageDescription = "Notes ghi am de chuyen thanh chu.";
+			INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Notes doc anh tu thu vien khi may khong co camera.";
+			INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+			INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+			PRODUCT_BUNDLE_IDENTIFIER = local.notes;
+			PRODUCT_NAME = Notes;
+			SWIFT_EMIT_LOC_STRINGS = YES;
+			TARGETED_DEVICE_FAMILY = 1;
+		}; name = Debug; };
+		B1000063 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {
+			ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+			CODE_SIGN_STYLE = Automatic;
+			GENERATE_INFOPLIST_FILE = YES;
+			CURRENT_PROJECT_VERSION = 1;
+			MARKETING_VERSION = 1.0;
+			INFOPLIST_KEY_CFBundleDisplayName = "Notes";
+			INFOPLIST_KEY_NSCameraUsageDescription = "Notes chup anh de dan vao nhat ky.";
+			INFOPLIST_KEY_NSMicrophoneUsageDescription = "Notes ghi am de chuyen thanh chu.";
+			INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Notes doc anh tu thu vien khi may khong co camera.";
+			INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+			INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+			PRODUCT_BUNDLE_IDENTIFIER = local.notes;
+			PRODUCT_NAME = Notes;
+			SWIFT_EMIT_LOC_STRINGS = YES;
+			TARGETED_DEVICE_FAMILY = 1;
+		}; name = Release; };
+	};
+	rootObject = B1000041;
+}
