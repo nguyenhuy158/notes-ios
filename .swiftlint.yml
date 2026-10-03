@@ -1,0 +1,21 @@
+# SwiftLint chay tay: `swiftlint` o goc repo. KHONG chay trong CI.
+# Nguong noi long theo code hien tai (file view lon, ten bien ngan trong closure).
+included:
+  - Notes
+  - NotesTests
+excluded:
+  - build
+disabled_rules:
+  - todo
+  - trailing_comma
+line_length:
+  warning: 140
+  error: 200
+  ignores_urls: true
+  ignores_comments: true
+identifier_name:
+  min_length: 1
+file_length:
+  warning: 800
+type_body_length:
+  warning: 500
