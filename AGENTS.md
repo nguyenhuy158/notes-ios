@@ -94,6 +94,9 @@ When adding an endpoint, add a decoding fixture in `DecodingTests` and a
 request-shape test in `ApiClientTests`. CI (`.github/workflows/test.yml`) runs
 `xcodebuild test` with code coverage and must be green before merging.
 
+Logic checks live only in XCTest (there is no DEBUG startup self-check). There is
+no browser e2e: this is a native app with no web surface.
+
 ## Commit & Pull Request Guidelines
 
 Use concise Conventional Commits; existing history uses short Vietnamese
