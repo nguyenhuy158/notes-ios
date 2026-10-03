@@ -1,0 +1,48 @@
+name: test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      # Ten simulator khac nhau theo image cua runner, nen do ra luc chay chu
+      # khong hardcode "iPhone 11" nhu may local.
+      - name: Chon simulator
+        run: |
+          NAME=$(xcrun simctl list devices available -j \
+            | python3 -c 'import json,sys;d=json.load(sys.stdin)["devices"];print(next(x["name"] for k,v in sorted(d.items()) if "iOS" in k for x in v if "iPhone" in x["name"]))')
+          echo "Dung simulator: $NAME"
+          echo "SIMULATOR=$NAME" >> "$GITHUB_ENV"
+
+      - name: Test
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -project Notes.xcodeproj \
+            -scheme Notes \
+            -sdk iphonesimulator \
+            -destination "platform=iOS Simulator,name=$SIMULATOR" \
+            -derivedDataPath build/dd \
+            -enableCodeCoverage YES \
+            | grep -E 'error:|warning:|Test Case .*(failed|passed)|Executed [0-9]+ tests|BUILD|TEST'
+
+      - name: Coverage
+        if: always()
+        run: |
+          RESULT=$(ls -td build/dd/Logs/Test/*.xcresult 2>/dev/null | head -1)
+          [ -n "$RESULT" ] || exit 0
+          xcrun xccov view --report --only-targets "$RESULT" | tee /tmp/cov.txt
+          xcrun xccov view --report --files-for-target Notes.app "$RESULT" || true
+          {
+            echo '### Coverage'
+            echo '```'
+            cat /tmp/cov.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
