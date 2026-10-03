@@ -177,18 +177,7 @@ struct ApiClient {
 
     /// Anh/audio cua note. Tra byte tho vi AsyncImage khong gan duoc cookie.
     func media(_ path: String) async throws -> Data {
-        let req = request(path, method: "GET")
-        do {
-            let (data, response) = try await session.data(for: req)
-            let code = (response as? HTTPURLResponse)?.statusCode ?? 0
-            if code == 401 { throw ApiError.unauthorized }
-            guard (200..<300).contains(code) else { throw ApiError.status(code) }
-            return data
-        } catch let error as ApiError {
-            throw error
-        } catch {
-            throw ApiError.transport(error.localizedDescription)
-        }
+        try await fetch(request(path, method: "GET"))
     }
 
     private func json(_ path: String, method: String, body: some Encodable) throws -> URLRequest {
@@ -215,7 +204,8 @@ struct ApiClient {
         init(from decoder: Decoder) throws {}
     }
 
-    private func send<T: Decodable>(_ req: URLRequest) async throws -> T {
+    /// Byte tho cua mot response 2xx; 401 va loi mang doi sang ApiError.
+    private func fetch(_ req: URLRequest) async throws -> Data {
         let data: Data
         let response: URLResponse
         do {
@@ -227,7 +217,11 @@ struct ApiClient {
         let code = (response as? HTTPURLResponse)?.statusCode ?? 0
         if code == 401 { throw ApiError.unauthorized }
         guard (200..<300).contains(code) else { throw ApiError.status(code) }
+        return data
+    }
 
+    private func send<T: Decodable>(_ req: URLRequest) async throws -> T {
+        let data = try await fetch(req)
         if T.self == Ignored.self { return Ignored() as! T }
 
         do {
