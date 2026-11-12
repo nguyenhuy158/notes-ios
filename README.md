@@ -1,11 +1,11 @@
 # Notes iOS
 
-App iOS native (SwiftUI) cho nhật ký [notes.huyab.click](https://notes.huyab.click).
+App iOS native (SwiftUI) cho nhật ký [notes.huyab.cfd](https://notes.huyab.cfd).
 Không dùng thư viện ngoài — chỉ SwiftUI + Foundation + WebKit.
 
 ## Làm được gì
 
-- Đăng nhập bằng SSO Google dùng chung của huyab.click
+- Đăng nhập bằng SSO Google dùng chung của huyab.cfd
 - Xem theo tháng → theo ngày, ghim / sửa chữ / sửa mood / xoá (xoá mềm)
 - Viết note mới: chữ, mood, địa điểm, nhãn, tối đa 10 ảnh chụp tại chỗ
 - Ghi âm → tự ra chữ: app ghi m4a 16kHz mono rồi POST `type=audio` với chữ để
@@ -24,9 +24,9 @@ in album ra PDF.
 
 ## Vì sao login bằng WKWebView
 
-SSO chỉ nhận `redirect_uri` https trong huyab.click, nên `ASWebAuthenticationSession`
+SSO chỉ nhận `redirect_uri` https trong huyab.cfd, nên `ASWebAuthenticationSession`
 với custom scheme không dùng được. App mở `WKWebView`, sau khi về
-`notes.huyab.click` thì đọc cookie `huyab_sso` (HttpOnly) từ `WKHTTPCookieStore`
+`notes.huyab.cfd` thì đọc cookie `huyab_sso` (HttpOnly) từ `WKHTTPCookieStore`
 rồi lưu vào Keychain.
 
 **Quan trọng:** worker của notes chỉ xác thực bằng **cookie**, không đọc

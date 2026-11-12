@@ -1,6 +1,6 @@
 import Foundation
 
-/// Token la JWT RS256 do auth.huyab.click ky. App KHONG verify chu ky — khong co
+/// Token la JWT RS256 do auth.huyab.cfd ky. App KHONG verify chu ky — khong co
 /// public key va cung khong can: worker verify moi request bang JWKS. App chi
 /// doc `exp` de biet khi nao khoi goi API, tranh mot vong 401 chac chan that bai.
 enum SsoToken {

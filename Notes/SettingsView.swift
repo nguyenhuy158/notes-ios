@@ -32,7 +32,7 @@ struct SettingsView: View {
                 Section {
                     Button("Đăng xuất", role: .destructive) { auth.signOut() }
                 } footer: {
-                    Text("Chia sẻ link, khoá PIN, xuất dữ liệu → vẫn làm trên notes.huyab.click.")
+                    Text("Chia sẻ link, khoá PIN, xuất dữ liệu → vẫn làm trên notes.huyab.cfd.")
                 }
             }
             .navigationTitle("Cài đặt")

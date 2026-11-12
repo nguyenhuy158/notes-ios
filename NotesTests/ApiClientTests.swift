@@ -79,7 +79,7 @@ final class ApiClientTests: XCTestCase {
         XCTAssertEqual(stats.noteCount, 3)
         XCTAssertEqual(StubProtocol.lastRequest?.httpMethod, "GET")
         XCTAssertEqual(StubProtocol.lastRequest?.url?.absoluteString,
-                       "https://notes.huyab.click/api/stats")
+                       "https://notes.huyab.cfd/api/stats")
         XCTAssertEqual(StubProtocol.lastRequest?.value(forHTTPHeaderField: "Cookie"),
                        "huyab_sso=tok")
         XCTAssertNil(StubProtocol.lastRequest?.value(forHTTPHeaderField: "Authorization"))

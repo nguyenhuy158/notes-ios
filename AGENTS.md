@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-Notes iOS is a native SwiftUI client for the notes journal at notes.huyab.click:
+Notes iOS is a native SwiftUI client for the notes journal at notes.huyab.cfd:
 month/day browsing, compose (text, mood, location, tags, photos, voice-to-text
 via the worker's Whisper), tags, photo album, year summary, trash and settings.
 Share links, PIN lock, offline queue, video, export and PDF stay on the web.
@@ -13,16 +13,16 @@ target plus one XCTest target, and the same `Auth.swift` / `API.swift` /
 `LoginView.swift` / `make-ipa.sh` layout.
 
 - **Auth** (`Auth.swift`, `LoginView.swift`): the shared SSO at
-  `auth.huyab.click` only accepts https `redirect_uri` values inside
-  `huyab.click`, so `ASWebAuthenticationSession` with a custom scheme cannot be
+  `auth.huyab.cfd` only accepts https `redirect_uri` values inside
+  `huyab.cfd`, so `ASWebAuthenticationSession` with a custom scheme cannot be
   used. `LoginView` opens a `WKWebView`; once it lands back on
-  `notes.huyab.click`, `WKHTTPCookieStore` reads the HttpOnly `huyab_sso` cookie
+  `notes.huyab.cfd`, `WKHTTPCookieStore` reads the HttpOnly `huyab_sso` cookie
   and the JWT is stored in the Keychain. `SsoToken` never verifies the signature
   (the server does); it only reads `exp` to know when to stop calling the API.
 - **API** (`API.swift`): DTOs are a projection of `src/api.ts` in the notes web
   repo. Declare only fields the app actually uses — Codable ignores unknown
   keys, so new server fields never break the app. `ApiClient` targets
-  `https://notes.huyab.click` and authenticates with a `Cookie: huyab_sso=<jwt>`
+  `https://notes.huyab.cfd` and authenticates with a `Cookie: huyab_sso=<jwt>`
   header with the URLSession cookie jar disabled (`httpShouldHandleCookies =
   false`) — the notes worker authenticates by cookie only and does NOT read
   `Authorization: Bearer`. Tests inject a `URLSession` with a fake
@@ -34,7 +34,7 @@ Folder structure:
 Notes/                      # App target sources (SwiftUI, iOS 16+)
   NotesApp.swift            #   `@main` app entry; `AuthStore` switches `LoginView` / `RootTabs`
   Auth.swift                #   `SsoToken` (reads JWT `exp` only), `Keychain`, `AuthStore`
-  LoginView.swift           #   WKWebView SSO login via auth.huyab.click, `WebSessionCleaner`
+  LoginView.swift           #   WKWebView SSO login via auth.huyab.cfd, `WebSessionCleaner`
   API.swift                 #   Decodable DTOs + `ApiClient` (URLSession, Cookie auth)
   DaysView.swift            #   `RootTabs`, month/day list
   DayView.swift             #   Day view, `NoteCard`, `MoodPicker`, `RemoteImage` + `ImageCache`
@@ -100,23 +100,23 @@ no browser e2e: this is a native app with no web surface.
 ## Commit & Pull Request Guidelines
 
 Use concise Conventional Commits; existing history uses short Vietnamese
-subjects without diacritics, e.g. `feat: app iOS cho notes.huyab.click`. Pull
+subjects without diacritics, e.g. `feat: app iOS cho notes.huyab.cfd`. Pull
 requests should include a short summary, `xcodebuild test` results, and
 simulator screenshots for visible UI changes.
 
 ## Ecosystem
 
-See the [huyab.click ecosystem map](https://github.com/nguyenhuy158/kit/blob/main/docs/ECOSYSTEM.md) for how all personal repos connect.
+See the [huyab.cfd ecosystem map](https://github.com/nguyenhuy158/kit/blob/main/docs/ECOSYSTEM.md) for how all personal repos connect.
 
 - Kit packages: none (Swift, zero dependencies; kit is pnpm-only).
-- Talks to: `notes` API at https://notes.huyab.click (explicit
-  `Cookie: huyab_sso=<token>`), `sso` at https://auth.huyab.click for WebView login.
+- Talks to: `notes` API at https://notes.huyab.cfd (explicit
+  `Cookie: huyab_sso=<token>`), `sso` at https://auth.huyab.cfd for WebView login.
 
 ## Agent-Specific Instructions
 
 Keep responses short and focused. If a requirement is unclear, ask before making
 assumptions. Keep the app phone-scoped: share links, PIN lock, offline queue,
-video capture, export and PDF printing stay on notes.huyab.click. Do not embed
+video capture, export and PDF printing stay on notes.huyab.cfd. Do not embed
 Whisper or other models; transcription is done by the worker (`type=audio` with
 empty text). When the server contract changes, update the DTOs here and the
 server repo together. Do not commit `build/`, `.ipa` files or `xcuserdata/`.
