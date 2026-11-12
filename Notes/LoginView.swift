@@ -1,8 +1,8 @@
 import SwiftUI
 import WebKit
 
-private let ssoOrigin = "https://auth.huyab.click"
-private let appHost = "notes.huyab.click"
+private let ssoOrigin = "https://auth.huyab.cfd"
+private let appHost = "notes.huyab.cfd"
 private let cookieName = "huyab_sso"
 
 /// Don cookie trong jar cua WKWebView khi dang xuat. Khong don thi lan sau bam
@@ -72,7 +72,7 @@ struct LoginView: View {
             .buttonStyle(.plain)
             .disabled(!online)
 
-            Text(online ? "Đăng nhập qua auth.huyab.click" : "Không có mạng")
+            Text(online ? "Đăng nhập qua auth.huyab.cfd" : "Không có mạng")
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }
@@ -104,7 +104,7 @@ private func hasNetwork() async -> Bool {
 }
 
 /// Vi sao WKWebView chu khong phai ASWebAuthenticationSession: SSO chi nhan
-/// `redirect_uri` la https trong huyab.click, khong nhan custom scheme, nen
+/// `redirect_uri` la https trong huyab.cfd, khong nhan custom scheme, nen
 /// khong co callback nao de bat. Bu lai WKHTTPCookieStore doc duoc cookie
 /// HttpOnly — dung thu JavaScript khong voi tay tới được.
 private struct LoginWebSheet: View {
@@ -112,7 +112,7 @@ private struct LoginWebSheet: View {
     let onFailure: (String) -> Void
 
     @Environment(\.dismiss) private var dismiss
-    @State private var host = "auth.huyab.click"
+    @State private var host = "auth.huyab.cfd"
 
     var body: some View {
         NavigationStack {
@@ -143,7 +143,7 @@ private struct LoginWebView: UIViewRepresentable {
         view.navigationDelegate = context.coordinator
 
         var components = URLComponents(string: ssoOrigin + "/login")!
-        // Quay ve chinh app web: SSO chi chap nhan redirect trong huyab.click.
+        // Quay ve chinh app web: SSO chi chap nhan redirect trong huyab.cfd.
         components.queryItems = [URLQueryItem(name: "redirect_uri", value: ApiClient.origin + "/")]
         view.load(URLRequest(url: components.url!))
         return view
